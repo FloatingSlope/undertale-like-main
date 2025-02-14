@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6lm3xtuv5nrg"]
+
+[ext_resource type="Script" path="res://Scripts/interaction_area.gd" id="1_kh00d"]
+[ext_resource type="Texture2D" uid="uid://clnymt2p8aqxf" path="res://Art/green-button.png" id="2_qiqri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awung"]
+size = Vector2(304, 272)
+
+[node name="InteractionArea" type="Area2D" node_paths=PackedStringArray("interactable_icon")]
+position = Vector2(1856, 1472)
+script = ExtResource("1_kh00d")
+interactable_icon = NodePath("Green-button")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_awung")
+
+[node name="Green-button" type="Sprite2D" parent="."]
+position = Vector2(0, -64)
+texture = ExtResource("2_qiqri")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="interacted" from="." to="." method="_on_interacted"]
